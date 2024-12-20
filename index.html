@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Maira</title>
+    <title>Para Gabriela</title>
     <style>
         /* Estilização do corpo da página */
         body {
@@ -15,7 +15,7 @@
             height: 100vh; /* Ocupa a altura total da tela */
             margin: 0;
             text-align: center;
-            background-color: #f0f0f0;
+            background-color: #c8e0ff;
             position: relative;
         }
 
@@ -54,14 +54,14 @@
             cursor: pointer;
             border: none;
             border-radius: 10px;
-            background-color: #007bff; /* Cor de fundo azul */
+            background-color: #000000; /* Cor de fundo azul #007bff*/
             color: white;
             transition: background-color 0.3s ease; /* Efeito de transição ao passar o mouse */
         }
 
         /* Cor de fundo do botão ao passar o mouse */
         button:hover {
-            background-color: #0056b3;
+            background-color: #00FF00;
         }
 
         /* Classe escondida para esconder elementos (usada para esconder os botões após clicar em "Sim") */
@@ -107,31 +107,6 @@
             }
         }
 
-        /* Estilização da imagem do gato */
-        #cat-image {
-            width: 250px;
-            height: auto;
-            position: absolute;
-            display: none; /* Começa oculta */
-            top: 50px;
-            left: 40%; /* Centralizado horizontalmente */
-            transform: translateX(-50%);
-            animation: bounce 1s ease infinite; /* Animação de "pular" */
-        }
-
-        /* Animação de pulo para a imagem do gato */
-        @keyframes bounce {
-            0% {
-                transform: translateY(0);
-            }
-            65% {
-                transform: translateY(-30px); /* Sobe e desce */
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
         /* Estilo para o plano de fundo ativo */
         body.background-active {
             background-image: url('images/borda-de-girassol-de-design-plano-com-espaco-de-copia_23-2148979244-Photoroom.png');
@@ -143,15 +118,21 @@
         /* Texto destacado com fonte maior e cor branca */
         .highlight-text {
             font-size: 3em;
-            color: white;
+            color: black;
         }
 
     </style>
 </head>
 <body>
+    <!-- Adicionar a tag de áudio aqui -->
+    <audio id="backgroundMusic" loop>
+        <source src="images/musica.mp3" type="audio/mp3">
+        Seu navegador não suporta o formato de áudio.
+    </audio>
+
     <!-- Conteúdo principal -->
     <div class="content">
-        <h1>Querida Maira Raquel, você está convidada para um jantar amanhã à noite!</h1>
+        <h1>Querida Gabriela, você está convidada para jantar no fim de semana!</h1>
         <p id="question">Aceita?</p>
         <div class="button-container" id="buttons">
             <button id="yes">Sim</button>
@@ -162,9 +143,6 @@
     </div>
     <div id="fireworks"></div> <!-- Container onde os fogos de artifício serão exibidos -->
 
-    <!-- Imagem do gato -->
-    <img src="images/jesse.jpg" id="cat-image" alt="Cat Image">
-
     <script>
         // Seleção dos elementos principais do HTML para interação
         const yesButton = document.getElementById('yes');
@@ -173,11 +151,12 @@
         const message = document.getElementById('message');
         const fireworks = document.getElementById('fireworks');
         const question = document.getElementById('question');
-        const catImage = document.getElementById('cat-image');
+        const music = document.getElementById('backgroundMusic'); // Referência ao áudio
 
         // Evento ao clicar no botão "Sim"
         yesButton.addEventListener('click', () => {
-            message.innerHTML = "<h2 class='highlight-text'>Fechou, marcado para 19/09/2024 às 19:30!</h2>"; // Altera a mensagem
+            music.play(); // Toca a música após o clique
+            message.innerHTML = "<h2 class='highlight-text'>Fechou, marcado para sábado às 21h!</h2>"; // Altera a mensagem
             buttonsContainer.classList.add('hidden'); // Esconde os botões
             question.innerHTML = "<span class='highlight-text'>Aí sim</span>"; // Muda a pergunta para "Aí sim"
             document.body.classList.add('background-active'); // Ativa o fundo com girassóis
@@ -188,8 +167,8 @@
         noButton.addEventListener('mouseover', () => {
             const maxX = window.innerWidth - noButton.offsetWidth - 10; // Limita o movimento dentro da janela
             const maxY = window.innerHeight - noButton.offsetHeight - 10;
-            const moveX = Math.random() * 100 - 50; // Movimento aleatório no eixo X
-            const moveY = Math.random() * 100 - 50; // Movimento aleatório no eixo Y
+            const moveX = Math.random() * 20 - 5; // Movimento aleatório no eixo X
+            const moveY = Math.random() * 20 - 5; // Movimento aleatório no eixo Y
 
             const newX = Math.max(0, Math.min(noButton.offsetLeft + moveX, maxX)); // Calcula a nova posição X
             const newY = Math.max(0, Math.min(noButton.offsetTop + moveY, maxY));  // Calcula a nova posição Y
@@ -220,10 +199,6 @@
             }, 2800);
         }
 
-        // Função que exibe a imagem do gato
-        function showCatImage() {
-            catImage.style.display = 'block'; // Mostra a imagem
-        }
     </script>
 </body>
 </html>
